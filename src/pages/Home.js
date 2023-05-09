@@ -5,10 +5,10 @@ import Highlights from '../components/Highlights';
 
 export default function Home() {
 	const data = {
-    title: "Zuitt Coding Bootcamp",
-    content: "Opportunities for everyone, everywhere",
-    destination: "/courses",
-    label: "Enroll now!"
+    title: "The Weird Coffee Person Consortium",
+    content: "We're nuts about coffee. :)",
+    destination: "/products",
+    label: "Shop Now!"
 }
 
 return (

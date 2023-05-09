@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Form, Button} from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 
@@ -49,8 +49,17 @@ export default function Login(props){
 				Swal.fire({
 					title:"Login Successful",
 					icon: "success", 
-					text: "Welcome to the The Crazy Coffee Consortium!"
+					text: "Welcome to Zuitt!"
 				});
+
+			// Check if user is an admin and redirect them to the admin page if they are
+						if(user.isAdmin){
+							navigate('/admin');
+						}
+						// If user is not an admin, redirect them to the products page
+						else{
+							navigate('/products');
+							
 			} else { 
 				Swal.fire({
 					title: "Authentication Failed", 
@@ -59,17 +68,6 @@ export default function Login(props){
 				});
 			};
 		})
-
-		/*// Set the email of the authenticated user in the local storage 
-		// Syntax 
-		localStorage.setItem('email', email);
-
-		// Set the global user state to have properties obtained from local storage
-		// Thhough access to the user information can be done via localStorage this is necessary to update the user state which will help update the App component and rerender it to avoid refreshing the page
-		// When state change components are rerendered and the AppNavBar component will be updated based on the user credentials 
-		setUser({
-			email: localStorage.getItem('email')
-		});*/
 
 		// Clear input fields 
 		setEmail('');
