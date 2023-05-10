@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Form, Button} from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import UserContext from '../UserContext';
 
@@ -27,7 +27,7 @@ export default function Login(props){
 		// Process a fetch request to the corresponding backend API 
 		// The header information "Content-Type" is used to specify that the information is being sent to the backend will be sent in the form of JSON
 		// The fetch request will communicate with our backend application providing it with a stringified JSON 
-		fetch(`${process.env.REACT_APP_API_URL}/users/login`, {
+		fetch(`http://localhost:4000/users/login`, {
 			method: 'POST', 
 			headers: {
 				"Content-Type": 'application/json'
@@ -51,15 +51,6 @@ export default function Login(props){
 					icon: "success", 
 					text: "Welcome to Zuitt!"
 				});
-
-			// Check if user is an admin and redirect them to the admin page if they are
-						if(user.isAdmin){
-							navigate('/admin');
-						}
-						// If user is not an admin, redirect them to the products page
-						else{
-							navigate('/products');
-							
 			} else { 
 				Swal.fire({
 					title: "Authentication Failed", 
