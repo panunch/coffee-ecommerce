@@ -27,7 +27,7 @@ export default function Login(props){
 		// Process a fetch request to the corresponding backend API 
 		// The header information "Content-Type" is used to specify that the information is being sent to the backend will be sent in the form of JSON
 		// The fetch request will communicate with our backend application providing it with a stringified JSON 
-		fetch(`http://localhost:4000/users/login`, {
+		fetch(`${process.env.REACT_APP_API_URL}/users/login`, {
 			method: 'POST', 
 			headers: {
 				"Content-Type": 'application/json'

@@ -13,7 +13,7 @@ export default function AppNavBar(){
 	return(
 		<Navbar bg="light" expand="lg">
 					    <Container fluid>
-					        <Navbar.Brand as={Link} to="/">The Weird Coffee Person Consortium</Navbar.Brand>
+					        <Navbar.Brand as={Link} to="/">Weird Coffee Person Nook</Navbar.Brand>
 					        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
 					        <Navbar.Collapse id="basic-navbar-nav">
 					            <Nav className="mr-auto">
