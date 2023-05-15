@@ -2,7 +2,7 @@ import {Row, Col, Card} from 'react-bootstrap';
 
 export default function Highlights(){
     return(
-        <Row className="my-3">
+        <Row className="mt-3 mb-3">
             <Col xs={12} md={4}>
                 <Card className="cardHighlight p-3">
                     <h2 className="text-center">Brewing Equipment</h2>

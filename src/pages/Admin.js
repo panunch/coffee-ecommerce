@@ -10,11 +10,6 @@ export default function AdminTable() {
   const [products, setProducts] = useState([]);
   const [avail, setAvail] = useState([]);
 
-  // Checks to see if the mock data was captured.
-  // console.log(coursesData);
-  // console.log(coursesData[0]);
-
-
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/products/all`, {
         headers: {
@@ -62,7 +57,7 @@ export default function AdminTable() {
   }
 
   const activateProduct = (productId) => {
-    console.log("wassup")
+    console.log("activateProduct")
     fetch(`${process.env.REACT_APP_API_URL}/products/${productId}/activate`, {
       method: 'PUT',
       headers: {

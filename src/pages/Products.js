@@ -1,73 +1,63 @@
 import { Fragment } from 'react';
 import { useEffect, useState, useContext } from 'react';
 import { Row, Col} from 'react-bootstrap';
-import ProductCard from '../components/Product';
+import ProductCard from '../components/ProductCard';
 import UserContext from '../UserContext';
 
 
 
 function Products() {
   const [products, setProducts] = useState([]);
-  const [selectedProductId, setSelectedProductId] = useState(null);
+
+  // Checks to see if the mock data was captured.
+  // console.log(coursesData);
+  // console.log(coursesData[0]);
+
 
   useEffect(() => {
-    fetch(`http://localhost:4000/products/all`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
+    fetch(`${process.env.REACT_APP_API_URL}/products/allActive`, {
+        headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`
+    }
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setProducts(data);
-      });
-  }, []);
+    .then(res => res.json())
+    .then(data => {
+      console.log(data)
+      setProducts(data) 
+      // console.log(products)
+    })
+  }, [])
+
+  console.log(products)
+  
+  
+
 
   return (
-    <div>
-      {products.map(product => (
-        <div key={product._id}>
-          <h2 onClick={() => handleProductClick(product._id)}>
-            {product.name}
-          </h2>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
-          <button onClick={() => handleArchive(product._id)}>Archive</button>
-        </div>
-      ))}
-    </div>
-  );
+    <>
+      <h1>Products</h1>
+      <>
+        {products.map(product => {
+          return (
+            <ProductCard key={product._id} productProp={product} />
+          )
+        })}
+      </>
+{/*     {productData.map((data) => {
+        return(
+          <ProductCard
+            name={data.name}
+            description={data.description}
+            price={data.price}
+            _id={data.id}
+          />
+        )
+      })}*/}
+    </>
+  )
 }
 
-function ProductDetails({ productId }) {
-  const [product, setProduct] = useState(null);
 
-  useEffect(() => {
-    fetch(`http://localhost:4000/products/:productId`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setProduct(data);
-      });
-  }, [productId]);
-
-  if (!product) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    <div>
-      <h2>{product.name}</h2>
-      <p>{product.description}</p>
-      <p>{product.price}</p>
-    </div>
-  );
-}
 
 export default Products;
