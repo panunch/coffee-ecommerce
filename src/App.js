@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Routes, Route } from 'react-router-dom';
 import AppNavBar from './components/AppNavBar';
+import Footer from './components/Footer';
 import Products from './pages/Products';
 import ProductsView from './pages/ProductsView';
 import Home from './pages/Home';
@@ -75,6 +76,7 @@ function App() {
                     <Route path="/*" element = {<Error/>}/>
                 </Routes>
             </Container>
+            <Footer /> 
         </Router>
     </UserProvider>
 

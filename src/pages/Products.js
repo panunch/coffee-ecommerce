@@ -36,7 +36,7 @@ function Products() {
 
   return (
     <>
-      <h1>Products</h1>
+      <h1 className="mt-3">Products</h1>
       <>
         {products.map(product => {
           return (
@@ -44,16 +44,6 @@ function Products() {
           )
         })}
       </>
-{/*     {productData.map((data) => {
-        return(
-          <ProductCard
-            name={data.name}
-            description={data.description}
-            price={data.price}
-            _id={data.id}
-          />
-        )
-      })}*/}
     </>
   )
 }

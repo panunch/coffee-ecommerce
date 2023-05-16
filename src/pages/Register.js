@@ -60,7 +60,7 @@ export default function Register(){
 
                 } else {
 
-                    fetch(`${ process.env.REACT_APP_API_URL }/users/register`, {
+                    fetch(`${process.env.REACT_APP_API_URL}/users/register`, {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json'
@@ -70,7 +70,7 @@ export default function Register(){
                             lastName: lastName,
                             email: email,
                             mobileNo: mobileNo,
-                            password: password1
+                            password: password1,
                         })
                     })
                     .then(res => res.json())
@@ -91,7 +91,7 @@ export default function Register(){
                             Swal.fire({
                                 title: 'Registration successful',
                                 icon: 'success',
-                                text: 'Thank you for registering your account at The Crazy Coffee Consortium! Happy Brewing'
+                                text: 'Thank you for registering your account at The Caffeine Consumers Club! Happy Brewing'
                             });
 
                             // Allows us to redirect the user to the login page after registering for an account
@@ -133,7 +133,7 @@ useEffect(() => {
         (user.id !== null) ?
             <Navigate to="/products"/>
         :
-        <Form onSubmit={(e) => registerUser(e)}>
+        <Form onSubmit={(e) => registerUser(e)} className='my-3 col-lg-7'>
             <Form.Group controlId="firstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control 
