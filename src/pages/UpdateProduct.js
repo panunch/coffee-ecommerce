@@ -12,12 +12,23 @@ export default function UpdateProduct() {
 	const [isActive, setIsActive] = useState(false);
 
 	const { productId } = useParams();
+	
+	useEffect(() => {
+		fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`)
+		.then(res => res.json())
+		.then(data => {
+			setName(data.name);
+			setDescription(data.description);
+			setPrice(data.price);
+		})
+	}, [productId]);
+	
 
 	const updateProduct = (e) => {
 
 		e.preventDefault()
 
-		fetch(`http://localhost:4000/products/${productId}`, {
+		fetch(`${process.env.REACT_APP_API_URL}/products/${productId}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',

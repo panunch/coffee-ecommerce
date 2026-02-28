@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import AppNavBar from './components/AppNavBar';
 import Footer from './components/Footer';
 import Products from './pages/Products';
@@ -70,9 +70,9 @@ function App() {
                     <Route path="/register"element = {<Register/>}/>
                     <Route path="/login" element = {<Login/>}/>
                     <Route path="/logout" element = {<Logout/>}/>
-                    <Route path="/admin" element = {<Admin/>}/>
-                    <Route path="/createproduct" element = {<CreateProduct/>}/>
-                    <Route path="/updateproduct/:productId" element = {<UpdateProduct/>}/>
+                    <Route path="/admin" element = {user.isAdmin ? <Admin/> : <Navigate to="/products"/>}/>
+                    <Route path="/createproduct" element = {user.isAdmin ? <CreateProduct/> : <Navigate to="/products"/>}/>
+                    <Route path="/updateproduct/:productId" element = {user.isAdmin ? <UpdateProduct/> : <Navigate to="/products"/>}/>
                     <Route path="/*" element = {<Error/>}/>
                 </Routes>
             </Container>
